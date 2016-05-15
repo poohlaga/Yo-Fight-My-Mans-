@@ -1,0 +1,77 @@
+// Use SPI, MP3, SD libs
+#include <SPI.h>
+#include <Adafruit_VS1053.h>
+#include <SD.h>
+
+// These are the pins used for the breakout example
+#define BREAKOUT_RESET  9      // VS1053 reset pin (output)
+#define BREAKOUT_CS     10     // VS1053 chip select pin (output)
+#define BREAKOUT_DCS    8      // VS1053 Data/command select pin (output)
+// These are the pins used for the music maker shield
+#define SHIELD_RESET   -1      // VS1053 reset pin (unused!)
+#define SHIELD_CS       7      // VS1053 chip select pin (output)
+#define SHIELD_DCS      6      // VS1053 Data/command select pin (output)
+
+// These are common pins between breakout and shield
+#define CARDCS          4     // Card chip select pin
+// DREQ should be an Int pin, see http://arduino.cc/en/Reference/attachInterrupt
+#define DREQ            3     // VS1053 Data request, ideally an Interrupt pin
+
+Adafruit_VS1053_FilePlayer musicPlayer = Adafruit_VS1053_FilePlayer(SHIELD_RESET, SHIELD_CS, SHIELD_DCS, DREQ, CARDCS);
+
+const int buttonA =    A0;
+//const int buttonB =    A1;
+
+int momcount = 0;
+//int dadcount = 0;
+
+void setup() {
+  Serial.begin(9600);  // have a serial for debugging
+  Serial.println("serial initialized");
+  pinMode(buttonA, INPUT_PULLUP);
+  pinMode(buttonA, INPUT_PULLUP);
+  Serial.println("buttons initialized");
+  if (! musicPlayer.begin()) {
+    Serial.println(F("Couldn't find VS1053, do you have the right pins defined?"));
+    while (1);
+  }
+  Serial.println(F("VS1053 found"));
+  SD.begin(CARDCS);
+  Serial.println("SD card initialized");
+  musicPlayer.setVolume(2,2);
+  Serial.println("volume set");
+  // Timer interrupts are not suggested, better to use DREQ interrupt!
+  //musicPlayer.useInterrupt(VS1053_FILEPLAYER_TIMER0_INT); // timer
+
+  // If DREQ is on an interrupt pin (on uno, #2 or #3) we can do background
+  // audio playing
+  musicPlayer.useInterrupt(VS1053_FILEPLAYER_PIN_INT);  // DREQ int
+}
+
+void loop() {
+  
+  if (!digitalRead(buttonA)) {
+    Serial.println("buttonA fired");
+    Serial.print("momcount ");
+    Serial.println(momcount);
+    if (momcount==0) {
+      musicPlayer.playFullFile("mom-art.mp3");
+    }
+    else if (momcount==1) {
+      musicPlayer.playFullFile("dad-art.mp3");
+    }
+    else if (momcount==2){
+      musicPlayer.playFullFile("mom-food.mp3");
+    }
+    else if (momcount==3){
+      musicPlayer.playFullFile("dad-food.mp3");
+    }
+    else if (momcount==4){
+      musicPlayer.playFullFile("mommusic.mp3");
+    }
+    else if (momcount==5){
+      musicPlayer.playFullFile("dadmusic.mp3");
+    }
+    momcount = (momcount + 1) % 6;
+  }
+}
