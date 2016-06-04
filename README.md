@@ -9,8 +9,8 @@ The installation featured two mannequins representing Dap's mother and father. V
 Dap (the artist) recorded audio of his parents talking and we converted it to MP3 files. I used the Arduino ["Music Maker" MP3 Shield](https://www.adafruit.com/product/1788) to store the MP3's and play the audio back on button press.
 
 There are two versions of the code with different actions:
-1. two buttons (one for mom, one for dad). they each say one story.
-2. one button, each says 3 things and they take turns and it cycles (e.g.: m1, d1, m2, d2, m3, d3, m1...)
+* two buttons (one for mom, one for dad). they each say one story.
+* one button, each says 3 things and they take turns and it cycles (e.g.: m1, d1, m2, d2, m3, d3, m1...)
 
 Press:
 * [Bedford and Bowery](http://bedfordandbowery.com/2016/02/ashok-kondabolu-of-das-racist-curates-a-show-inspired-by-things-that-make-him-go-whoa/)
