@@ -10,7 +10,8 @@ Dap (the artist) recorded audio of his parents talking and we converted it to MP
 
 There are two versions of the code with different actions:
 * two buttons (one for mom, one for dad). they each say one story.
-* one button, each says 3 things and they take turns and it cycles (e.g.: m1, d1, m2, d2, m3, d3, m1...)
+* one button, each says 3 things and they take turns and it cycles 
+  * e.g.: m1, d1, m2, d2, m3, d3, m1...
 
 Press:
 * [Bedford and Bowery](http://bedfordandbowery.com/2016/02/ashok-kondabolu-of-das-racist-curates-a-show-inspired-by-things-that-make-him-go-whoa/)
