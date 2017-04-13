@@ -4,7 +4,7 @@ This is code I used for an installation featured in [Yo, Fight My Mans](http://w
 
 The installation featured two mannequins representing Dap's mother and father. Visitors approach, press a button then hear his 'parents' relay personal stories through a set of speakers mounted in the mannequins. 
 
-![in queens](https://drive.google.com/file/d/0B042omrPdFKUVDB0TWJ2c1dibVU/view)
+![in queens](https://drive.google.com/file/d/0B042omrPdFKUVDB0TWJ2c1dibVU)
 
 There are two versions of the code with different actions:
 * [two buttons](https://github.com/poohlaga/Yo-Fight-My-Mans-/blob/master/2but3phrases) (one for mom, one for dad). they each say one story.
